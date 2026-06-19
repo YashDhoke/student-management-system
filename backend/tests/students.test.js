@@ -169,6 +169,15 @@ describe('PUT /api/students/:id', () => {
     expect(res.body.data.phone).toBe('+1234500000');
   });
 
+  it('should clear optional fields (date_of_birth, phone) when empty strings are sent', async () => {
+    const res = await request(app)
+      .put(`/api/students/${createdStudentId}`)
+      .send({ date_of_birth: '', phone: '' });
+    expect(res.statusCode).toBe(200);
+    expect(res.body.data.date_of_birth).toBeNull();
+    expect(res.body.data.phone).toBeNull();
+  });
+
   it('should return 400 if email format is invalid on update', async () => {
     const res = await request(app)
       .put(`/api/students/${createdStudentId}`)

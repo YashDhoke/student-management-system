@@ -37,8 +37,8 @@ const validateStudent = (req, res, next) => {
     }
   }
 
-  // Date of birth validation if provided
-  if (date_of_birth) {
+  // Date of birth validation if provided (ignore empty/null values as they are cleared to NULL)
+  if (date_of_birth !== undefined && date_of_birth !== null && String(date_of_birth).trim() !== '') {
     const dob = new Date(date_of_birth);
     if (isNaN(dob.getTime())) {
       errors.date_of_birth = 'Date of birth must be a valid date (YYYY-MM-DD).';

@@ -16,9 +16,9 @@ const createStudent = async (req, res, next) => {
       first_name.trim(),
       last_name.trim(),
       email.trim().toLowerCase(),
-      phone ? phone.trim() : null,
-      date_of_birth || null,
-      enrollment_date || null,
+      typeof phone === 'string' ? phone.trim() || null : phone,
+      typeof date_of_birth === 'string' ? date_of_birth.trim() || null : date_of_birth,
+      typeof enrollment_date === 'string' ? enrollment_date.trim() || null : enrollment_date,
     ];
 
     const result = await db.query(queryText, values);
@@ -166,12 +166,12 @@ const updateStudent = async (req, res, next) => {
     `;
 
     const values = [
-      first_name !== undefined ? first_name : currentStudent.first_name,
-      last_name !== undefined ? last_name : currentStudent.last_name,
-      email !== undefined ? email : currentStudent.email,
-      phone !== undefined ? phone : currentStudent.phone,
-      date_of_birth !== undefined ? date_of_birth : currentStudent.date_of_birth,
-      enrollment_date !== undefined ? enrollment_date : currentStudent.enrollment_date,
+      first_name !== undefined ? (typeof first_name === 'string' ? first_name.trim() : first_name) : currentStudent.first_name,
+      last_name !== undefined ? (typeof last_name === 'string' ? last_name.trim() : last_name) : currentStudent.last_name,
+      email !== undefined ? (typeof email === 'string' ? email.trim().toLowerCase() : email) : currentStudent.email,
+      phone !== undefined ? (typeof phone === 'string' ? phone.trim() || null : phone) : currentStudent.phone,
+      date_of_birth !== undefined ? (typeof date_of_birth === 'string' ? date_of_birth.trim() || null : date_of_birth) : currentStudent.date_of_birth,
+      enrollment_date !== undefined ? (typeof enrollment_date === 'string' ? enrollment_date.trim() || null : enrollment_date) : currentStudent.enrollment_date,
       id,
     ];
 
