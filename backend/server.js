@@ -3,6 +3,7 @@ const { pool } = require('./src/config/db');
 const logger = require('./src/config/logger');
 require('dotenv').config();
 
+// Railway watch path trigger
 const PORT = process.env.PORT || 5001;
 
 const server = app.listen(PORT, () => {
