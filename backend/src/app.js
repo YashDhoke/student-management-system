@@ -11,7 +11,17 @@ const marksRouter = require('./routes/marks.routes');
 const app = express();
 
 // ── Core Middlewares ───────────────────────────────────────────────────────
-app.use(cors());
+// ── CORS ──────────────────────────────────────────────────────────────────
+// In production set ALLOWED_ORIGINS="https://your-vercel-url.vercel.app"
+// In development defaults to '*' (all origins allowed)
+const corsOptions = {
+  origin: process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(',').map((o) => o.trim())
+    : '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
