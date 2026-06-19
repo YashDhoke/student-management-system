@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import StudentList from './components/StudentList';
 import StudentDetail from './components/StudentDetail';
@@ -7,9 +7,13 @@ import Toast from './components/Toast';
 function App() {
   const [toast, setToast] = useState(null);
 
-  const showToast = (message, type = 'success') => {
+  const showToast = useCallback((message, type = 'success') => {
     setToast({ message, type });
-  };
+  }, []);
+
+  const handleCloseToast = useCallback(() => {
+    setToast(null);
+  }, []);
 
   return (
     <Router>
@@ -72,7 +76,7 @@ function App() {
           <Toast
             message={toast.message}
             type={toast.type}
-            onClose={() => setToast(null)}
+            onClose={handleCloseToast}
           />
         )}
       </div>

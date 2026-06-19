@@ -16,7 +16,7 @@ const Toast = ({ message, type = 'success', onClose }) => {
       : 'border-blue-500/30 bg-blue-950/80 text-blue-300';
 
   return (
-    <div className={`fixed bottom-5 right-5 z-50 flex items-center gap-3 rounded-xl border p-4 shadow-2xl backdrop-blur-xl transition-all duration-300 transform translate-y-0 animate-bounce-short ${bgClass}`}>
+    <div className={`fixed bottom-5 right-5 z-50 flex items-center gap-3 rounded-xl border p-4 shadow-2xl backdrop-blur-xl transition-all duration-300 toast-slide-in ${bgClass}`}>
       <span className="text-sm font-semibold">{message}</span>
       <button
         onClick={onClose}
