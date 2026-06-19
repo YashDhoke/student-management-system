@@ -1,4 +1,4 @@
-CREATE TABLE students (
+CREATE TABLE IF NOT EXISTS students (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE students (
     updated_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE marks (
+CREATE TABLE IF NOT EXISTS marks (
     id SERIAL PRIMARY KEY,
     student_id INTEGER NOT NULL REFERENCES students(id) ON DELETE CASCADE,
     subject VARCHAR(100) NOT NULL,
@@ -21,4 +21,4 @@ CREATE TABLE marks (
     UNIQUE(student_id, subject, exam_type)
 );
 
-CREATE INDEX idx_marks_student_id ON marks(student_id);
+CREATE INDEX IF NOT EXISTS idx_marks_student_id ON marks(student_id);
