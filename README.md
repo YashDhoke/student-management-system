@@ -13,6 +13,13 @@ A full-stack student management application featuring CRUD operations, academic 
 
 ---
 
+## 🔗 Live Demo
+
+- **Backend API Base**: `https://student-management-system-production-4cd2.up.railway.app/api`
+- **API Health Check**: `https://student-management-system-production-4cd2.up.railway.app/api/health`
+
+---
+
 ## 📂 Project Structure
 
 ```
