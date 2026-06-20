@@ -15,6 +15,7 @@ A full-stack student management application featuring CRUD operations, academic 
 
 ## 🔗 Live Demo
 
+- **Walkthrough Video**: https://www.loom.com/share/da2631a86e2143d49d74dcca5b0d0092
 - **Frontend Application**: https://student-management-system-ute1.vercel.app/
 - **Backend API Base**: `https://student-management-system-production-4cd2.up.railway.app/api`
 - **API Health Check**: `https://student-management-system-production-4cd2.up.railway.app/api/health`
